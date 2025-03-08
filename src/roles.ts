@@ -1,0 +1,31 @@
+  export const RolesList = () => {
+
+    return {
+        "roles": [
+          {
+            "name": "admin",
+            "permissions": [
+              "create_record",
+              "read_record",
+              "update_record",
+              "delete_record"
+            ]
+          },
+          {
+            "name": "manager",
+            "permissions": [
+              "create_record",
+              "read_record",
+              "update_record"
+            ]
+          },
+          {
+            "name": "employee",
+            "permissions": [
+              "create_record",
+              "read_record"
+            ]
+          }
+        ]
+      };
+    }
