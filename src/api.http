@@ -1,0 +1,57 @@
+### REGISTER USER
+POST http://localhost:3000/api/auth/register
+Content-Type: application/json
+
+{
+"email": "darielmf@gmail.com",
+"password": "D161090#m",
+"displayName": "dennisll",
+"firstName": "dennis",
+"lastName": "labrada",
+"phoneNumber": "1-570-236-7033",
+"city": "kilcoole",
+"street": "new road",
+"houseNumber": "7682",
+"cep": "12926-3874",
+"photoUrl":"https://live.staticflickr.com/8678/16674607715_0a9d85bdb3_c.jpg"
+}
+
+### LOGIN USER
+POST http://localhost:3000/api/auth/login
+Content-Type: application/json
+
+{
+  "email": "darielmf@gmail.com",
+  "password": "D161090#m"     
+}
+
+### GET ALL USERS
+GET http://localhost:3000/api/users
+Content-Type: application/json
+authorization: Bearer zI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY3YzM0N2NlOWNkZjk1NjRiZDMzMTEzNSIsImlhdCI6MTc0MDk1ODcwMn0.SQC15zTyF3MxlM5jqku3EiaT7i1kBZFel5ecPvTUn8U
+
+### GET USER BY ID
+GET http://localhost:3000/api/users/67c3442fc4ee100109ec6bcb
+Content-Type: application/json
+
+### UPDATE USER
+PATCH  http://localhost:3000/api/users/67c347ce9cdf9564bd331135
+Content-Type: application/json
+
+{
+"email": "darielmf@gmail.com",
+"password": "D161090#m",
+"displayName": "dennisll",
+"firstName": "dennis",
+"lastName": "labrada",
+"phoneNumber": "1-570-236-7033",
+"city": "kilcoole",
+"street": "new road",
+"houseNumber": "7682",
+"cep": "12926-3874",
+"photoUrl":"https://live.staticflickr.com/8678/16674607715_0a9d85bdb3_c.jpg"
+}
+
+### DELETE USER
+DELETE http://localhost:3000/api/users/67c3442fc4ee100109ec6bcb
+Content-Type: application/json
