@@ -1,5 +1,4 @@
 import { Validators } from "../../../config/validators";
-import { Request } from "express";
 
 export class UpdateUserDto {
 
