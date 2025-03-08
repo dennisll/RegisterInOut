@@ -1,7 +1,8 @@
 import { Request, Response } from "express";
 import { UpdateUserDto } from "../../domain/dtos/user/updateUser.dto";
 import { CustomError, DeleteUserCase, GetUserCase, GetUsersCase, UpdateUserCase, UserEntity } from "../../domain";
-import { RolesList } from "../../users";
+import { RolesList } from "../../roles";
+
 
 const roles: any = RolesList();
 
