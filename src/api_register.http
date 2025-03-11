@@ -1,0 +1,46 @@
+### REGISTER REGISTER
+POST http://localhost:3000/api/registers
+Content-Type: application/json
+
+{
+  "year": 2025,
+  "month": 2,
+  "day": 6,
+  "hour": 12,
+  "minute": 23,
+  "second": 45,
+  "lat": "45.5486",
+  "long": "67.5486",
+  "imageUrl": "https://live.staticflickr.com/8678/16674607715_0a9d85bdb3_c.jpg",
+  "registerType": "startLunch"
+}
+
+### GET ALL REGISTERS
+GET http://localhost:3000/api/registers
+Content-Type: application/json
+authorization: Bearer zI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY3YzM0N2NlOWNkZjk1NjRiZDMzMTEzNSIsImlhdCI6MTc0MDk1ODcwMn0.SQC15zTyF3MxlM5jqku3EiaT7i1kBZFel5ecPvTUn8U
+
+### GET REGISTER BY ID
+GET http://localhost:3000/api/registers/67ce47a8ec44e54ceda892cf
+Content-Type: application/json
+
+### GET REGISTER BY DATE
+GET http://localhost:3000/api/registers/2025/3/6
+Content-Type: application/json
+
+### UPDATE REGISTER
+PATCH  http://localhost:3000/api/registers/67cf55229e089e2304a5b06a
+Content-Type: application/json
+
+{
+  "year": 2025,
+  "month": 2,
+  "day": 6,
+  "hour": 12,
+  "minute": 23,
+  "registerType": "entrance"
+}
+
+### DELETE REGISTER
+DELETE http://localhost:3000/api/registers/67cf55229e089e2304a5b06a
+Content-Type: application/json

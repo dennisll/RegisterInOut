@@ -1,16 +1,14 @@
-import { Request, Response, NextFunction, Router } from "express";
+import { Router } from "express";
 import { AuthController } from "./controller";
 import {
   AuthRepositoryImpl,
   MongoDbAuthDatasourceImpl,
-  UserDatasourceImpl,
+
 } from "../../infraestructure";
 import { AuthMiddleware } from "../middlewares/auth.middleware";
 import {
-  CustomError,
   GenerateTokenAuthCase,
   RegisterUserCase,
-  UserEntity,
   VerifyByEmailAndPasswordCase,
 } from "../../domain";
 import { createLocalStrategy } from "../../config";

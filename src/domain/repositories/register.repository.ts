@@ -10,6 +10,6 @@ export abstract class RegisterRepository{
     abstract getOneRegisterData(id: string): Promise<RegisterEntity>;
     abstract getManyRegisterData(data: Date): Promise<RegisterEntity []>;
     abstract getAllRegisterData(): Promise<RegisterEntity []>;
-    abstract updateRegisterData(updateRegisterDto: UpdateRegisterDto ): Promise<string>;
+    abstract updateRegisterData(id: string, updateRegisterDto: UpdateRegisterDto ): Promise<string>;
     abstract deleteRegisterData(id: string): Promise<boolean>;
 }

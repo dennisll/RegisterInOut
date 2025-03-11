@@ -2,6 +2,7 @@
 import {Router } from 'express'
 import { AuthRoutes } from './auth/routes';
 import { UserRoutes } from './users/routes';
+import { RegisterRoutes } from './registers/routes';
 
 export class AppRoutes{
 
@@ -11,6 +12,7 @@ export class AppRoutes{
 
         router.use('/api/auth', AuthRoutes.routes);
         router.use('/api/users', UserRoutes.routes);
+        router.use('/api/registers', RegisterRoutes.routes);
         return router;
     }
 }

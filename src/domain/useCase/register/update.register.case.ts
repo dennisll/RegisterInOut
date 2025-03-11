@@ -2,7 +2,7 @@ import {RegisterEntity, UpdateRegisterDto } from "../..";
 import { RegisterRepository } from "../../repositories/register.repository";
 
 
-export class RegisterDataCase{
+export class UpdateRegisterDataCase{
 
     private readonly registerRepository: RegisterRepository;
 
@@ -11,7 +11,7 @@ export class RegisterDataCase{
         this.registerRepository = registerRepository;
     }
 
-    updateRegisterData(updateRegisterDto: UpdateRegisterDto ): Promise<string>{
-        return this.registerRepository.updateRegisterData(updateRegisterDto);
+    updateRegisterData(id: string, updateRegisterDto: UpdateRegisterDto ): Promise<string>{
+        return this.registerRepository.updateRegisterData(id, updateRegisterDto);
     }
 }

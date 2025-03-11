@@ -1,6 +1,6 @@
 
 
-export enum RegisterType { entrance, startLunch, endLunch, exit }
+export enum RegisterType { "entrance", "startLunch", "endLunch", "exit" }
 
 export class RegisterEntity{
 
@@ -12,6 +12,6 @@ export class RegisterEntity{
         public long: string,
         public imageUrl: string,
         public state: string,
-        public registerType: RegisterType 
+        public registerType: RegisterType,
     ) {}
 }
