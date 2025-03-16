@@ -11,7 +11,7 @@ export class RegisterDataCase{
         this.registerRepository = registerRepository;
     }
 
-    registerData(registerDto: RegisterDto ): Promise<RegisterEntity>{
-        return this.registerRepository.registerData(registerDto);
+    registerData(id: string, registerDto: RegisterDto ): Promise<RegisterEntity>{
+        return this.registerRepository.registerData(id, registerDto);
     }
 }

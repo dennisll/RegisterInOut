@@ -2,19 +2,18 @@ import { Request, Response } from "express";
 import {
   DeleteRegisterDataCase,
   GetAllRegisterCase,
-  GetManyRegisterCase,
   GetOneRegisterCase,
   RegisterDataCase,
   RegisterDto,
   UpdateRegisterDataCase,
   UpdateRegisterDto,
+  UserEntity,
 } from "../../domain";
 import { handleError } from "../shared/handleError";
 
 export class RegisterController {
   constructor(
     private readonly getAllRegisterCase: GetAllRegisterCase,
-    private readonly getManyRegisterCase: GetManyRegisterCase,
     private readonly getOneRegisterCase: GetOneRegisterCase,
     private readonly registerDataCase: RegisterDataCase,
     private readonly updateRegisterDataCase: UpdateRegisterDataCase,
@@ -24,23 +23,6 @@ export class RegisterController {
   public getAllRegisters = (req: Request, res: Response) => {
     this.getAllRegisterCase
       .getAllRegisterData()
-      .then((registers) => {
-        res.json(registers);
-      })
-      .catch((error) => {
-        return handleError(error, res);
-      });
-  };
-
-  public getManyRegisters = (req: Request, res: Response) => {
-    const year = parseInt(req.params.year);
-    const month = parseInt(req.params.month);
-    const day = parseInt(req.params.day);
-
-    const data = new Date(year, month, day);
-
-    this.getManyRegisterCase
-      .getManyRegisterData(data)
       .then((registers) => {
         res.json(registers);
       })
@@ -64,29 +46,18 @@ export class RegisterController {
 
   public registerData = (req: Request, res: Response) => {
     const {
-      year,
-      month,
-      day,
-      hour,
-      minute,
-      second,
+      data,
       lat,
       long,
-      imageUrl,
       registerType,
     } = req.body;
 
+    const user: UserEntity = req.user as UserEntity;
 
     const [err, registerDto] = RegisterDto.create({
-      year: year,
-      month: month,
-      day: day,
-      hour: hour,
-      minute: minute,
-      second: second,
+      data: data,
       lat: lat,
       long: long,
-      imageUrl: imageUrl,
       registerType: registerType,
     });
 
@@ -96,7 +67,7 @@ export class RegisterController {
     }
 
     this.registerDataCase
-      .registerData(registerDto!)
+      .registerData(user.id, registerDto!)
       .then((register) => {
         res.json(register);
       })
@@ -107,8 +78,7 @@ export class RegisterController {
 
   public updateRegisterData = (req: Request, res: Response) => {
     const id = req.params.id;
-    const { year, month, day, registerType } = req.body;
-    const data = new Date(parseInt(year), parseInt(month), parseInt(day));
+    const { data, registerType } = req.body;
 
     const [err, updateRegisterDto] = UpdateRegisterDto.create({
       data: data,

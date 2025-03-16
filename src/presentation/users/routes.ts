@@ -30,9 +30,9 @@ export class UserRoutes{
             deleteUserCase
         );
 
-        router.get('/', passportJwtMiddleware, controller.getAll); //
+        router.get('/', passportJwtMiddleware, controller.getAll); 
         
-        router.get('/:id', passportJwtMiddleware, controller.getById); //
+        router.get('/:id', passportJwtMiddleware, controller.getById); 
 
         router.patch('/:id', passportJwtMiddleware, controller.update);
 

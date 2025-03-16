@@ -23,8 +23,6 @@ export class MongoDbAuthDatasourceImpl implements AuthDatasource {
     private readonly generateToken: GenerateTokenFunction = JwtAdapter.generateToken
   ) {}
 
-  //abstract login( loginUserDto: LoginUserDto): Promise<UserEntity>;
-
   async register(registerUserDto: RegisterUserDto): Promise<UserEntity> {
     const {
       email,
@@ -41,7 +39,6 @@ export class MongoDbAuthDatasourceImpl implements AuthDatasource {
     } = registerUserDto;
 
     try {
-      //verificar si el correo existe
       const exist = await UserModel.findOne({ email: email });
       if (exist) throw CustomError.badRequest("Invalid credentials");
 
@@ -60,7 +57,6 @@ export class MongoDbAuthDatasourceImpl implements AuthDatasource {
       });
       await userModel.save();
 
-      //mapear la respuesta a nuestra entidad y devolverla
       return UserMapper.userEntityFromObject(userModel);
     } catch (error) {
       if (error instanceof CustomError) {

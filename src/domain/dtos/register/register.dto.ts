@@ -11,12 +11,7 @@ export class RegisterDto {
 
   static create(object: { [key: string]: any }): [string?, RegisterDto?] {
     const {
-      year,
-      month,
-      day,
-      hour,
-      minute,
-      second,
+      data,
       lat,
       long,
       imageUrl,
@@ -25,7 +20,7 @@ export class RegisterDto {
 
     const time = new Date();
 
-    if (!year) return ["Missing year"];
+    /* if (!year) return ["Missing year"];
     if (parseInt(year) != time.getFullYear()) return ["Incorrect year"];
     if (!month) return ["Missing month"];
     if (parseInt(month) != time.getMonth()) {
@@ -50,24 +45,39 @@ export class RegisterDto {
       return ["Incorrect minute"];
     if (!second) return ["Missing second"];
     if (0 > parseInt(second) && parseInt(second) > 60)
-      return ["Incorrect second"];
+      return ["Incorrect second"]; */
     if (!lat) return ["Missing lat"];
     if (!long) return ["Missing long"];
-    if (!imageUrl) return ["Missing imageUrl"];
     if (!registerType) return ["Missing registerType"];
+    if (registerType != RegisterType.ENTRANCE) {
+      if (registerType != RegisterType.STARTLUNCH) {
+        if (registerType != RegisterType.ENDLUNCH) {
+          if (registerType != RegisterType.EXIT) {
+            return ["Incorrect RegisterType"];
+          }
+        }
+      }
+    }
+    /* if (registerType == RegisterType.ENTRANCE && (hour < 8 || hour >= 12)) {
+      return ["Not matching RegisterType with datatime"];
+    }
+    if (registerType == RegisterType.STARTLUNCH && hour <= 12) {
+      return ["Not matching RegisterType with datatime"];
+    }
+    if (registerType == RegisterType.ENDLUNCH && hour >= 18) {
+      return ["Not matching RegisterType with datatime"];
+    }
+    if (registerType == RegisterType.EXIT && (hour >= 8 || hour <= 18)) {
+      return ["Not matching RegisterType with datatime"];
+    } */
 
-    const data = new Date(
-      parseInt(year),
-      parseInt(month),
-      parseInt(day),
-      parseInt(hour),
-      parseInt(minute),
-      parseInt(second)
+    const newData = new Date(
+      data
     );
 
     return [
       undefined,
-      new RegisterDto(data, lat, long, imageUrl, registerType),
+      new RegisterDto(newData, lat, long, imageUrl, registerType),
     ];
   }
 }

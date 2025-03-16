@@ -1,17 +1,17 @@
+export const enum RegisterType {
+  ENTRANCE = "entrance",
+  STARTLUNCH = "startLunch",
+  ENDLUNCH = "endLunch",
+  EXIT = "exit",
+}
 
-
-export enum RegisterType { "entrance", "startLunch", "endLunch", "exit" }
-
-export class RegisterEntity{
-
-    constructor(
-        public id: string,
-        public data: Date,
-        public accumulatedTime: number,
-        public lat: string,
-        public long: string,
-        public imageUrl: string,
-        public state: string,
-        public registerType: RegisterType,
-    ) {}
+export class RegisterEntity {
+  constructor(
+    public id: string,
+    public data: Date,
+    public lat: string,
+    public long: string,
+    public state: string,
+    public registerType: RegisterType
+  ) {}
 }

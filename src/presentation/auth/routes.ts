@@ -42,8 +42,6 @@ export class AuthRoutes {
 
     router.post("/passreset", controller.passwordReset);
 
-    router.get("/", AuthMiddleware.validateJwt, controller.getUsers);
-
     return router;
   }
 }

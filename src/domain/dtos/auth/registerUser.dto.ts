@@ -2,7 +2,6 @@ import { Validators } from "../../../config/validators";
 
 export class RegisterUserDto {
   private constructor(
-    // para impedir su uso fuera de la clase
     public email: string,
     public password: string,
     public displayName: string,
@@ -31,8 +30,6 @@ export class RegisterUserDto {
       phoneNumber,
       photoUrl,
     } = object;
-
-    //podria usar el paquete zod para validar tambien
 
     if (!email) return ["Missing email"];
     if (!Validators.email.test(email)) return ["Email is not valid"];

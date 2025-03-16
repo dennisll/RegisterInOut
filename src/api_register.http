@@ -1,43 +1,37 @@
 ### REGISTER REGISTER
 POST http://localhost:3000/api/registers
 Content-Type: application/json
+authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY3ZDIwMTRjZjI1YmM0Nzc0NzIxOTFmMCIsImlhdCI6MTc0MTgxNjE4NH0.xBjkd1M8AteIbhM9rGU6kMUGjzaYiE2mee4EUr0Ij14
 
 {
-  "year": 2025,
-  "month": 2,
-  "day": 6,
-  "hour": 12,
-  "minute": 23,
-  "second": 45,
+  "data": "2025-03-09T08:25:00",
   "lat": "45.5486",
   "long": "67.5486",
-  "imageUrl": "https://live.staticflickr.com/8678/16674607715_0a9d85bdb3_c.jpg",
-  "registerType": "startLunch"
+  "registerType": "entrance"
 }
 
 ### GET ALL REGISTERS
 GET http://localhost:3000/api/registers
 Content-Type: application/json
-authorization: Bearer zI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY3YzM0N2NlOWNkZjk1NjRiZDMzMTEzNSIsImlhdCI6MTc0MDk1ODcwMn0.SQC15zTyF3MxlM5jqku3EiaT7i1kBZFel5ecPvTUn8U
+authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY3ZDBjZDQ0MDY4NWM3M2E5NWVhODU5YSIsImlhdCI6MTc0MTczNzQ5MX0.j8op3q_YNyMEE7qhtM1uguiSczwKSqnGOS72v2CTe4M
 
 ### GET REGISTER BY ID
-GET http://localhost:3000/api/registers/67ce47a8ec44e54ceda892cf
+GET http://localhost:3000/api/registers/67d60f28cbc3b59146872dbc
 Content-Type: application/json
+authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY3ZDIwMTRjZjI1YmM0Nzc0NzIxOTFmMCIsImlhdCI6MTc0MTgxNjE4NH0.xBjkd1M8AteIbhM9rGU6kMUGjzaYiE2mee4EUr0Ij14
 
 ### GET REGISTER BY DATE
-GET http://localhost:3000/api/registers/2025/3/6
+GET http://localhost:3000/api/registers/67d60f28cbc3b59146872dbc/2025-03-09
 Content-Type: application/json
+authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY3ZDIwMTRjZjI1YmM0Nzc0NzIxOTFmMCIsImlhdCI6MTc0MTgxNjE4NH0.xBjkd1M8AteIbhM9rGU6kMUGjzaYiE2mee4EUr0Ij14
 
 ### UPDATE REGISTER
-PATCH  http://localhost:3000/api/registers/67cf55229e089e2304a5b06a
+PATCH  http://localhost:3000/api/registers/67cf55199e089e2304a5b067
 Content-Type: application/json
+authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY3ZDIwMTRjZjI1YmM0Nzc0NzIxOTFmMCIsImlhdCI6MTc0MTgxNjE4NH0.xBjkd1M8AteIbhM9rGU6kMUGjzaYiE2mee4EUr0Ij14
 
 {
-  "year": 2025,
-  "month": 2,
-  "day": 6,
-  "hour": 12,
-  "minute": 23,
+  "data": "2025-03-09T08:25:00",
   "registerType": "entrance"
 }
 

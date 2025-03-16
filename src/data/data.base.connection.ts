@@ -2,10 +2,10 @@
 
 export interface Options {
     url?: string;
-    dbName: string;
+    dbName?: string;
 }
 
 export abstract class DataBaseConnection {
 
-    abstract connect(options: Options): Promise<void>;
+    abstract connect(): Promise<void>;
 }

@@ -9,10 +9,6 @@ const registerSchema = new Schema({
         type: Date,
         required: [true, "Data is required"],
      },
-     accumulatedTime: {
-        type: Number,
-        required: [true, "AccumulatedTime is required"],
-     },
      lat: {
         type: String,
         required: [true, "Lat is required"],
@@ -20,10 +16,6 @@ const registerSchema = new Schema({
      long: {
         type: String,
         required: [true, "Long is required"],
-     },
-     imageUrl: {
-        type: String,
-        required: [true, "ImageUrl is required"],
      },
      state: {
         type: String,
@@ -36,6 +28,11 @@ const registerSchema = new Schema({
         default: "entrance",
         enum: ["entrance", "startLunch", "endLunch", "exit"],
      },
+     userId: {
+      required: "The register only can be created by user",
+      type: Schema.Types.ObjectId,
+      ref: "User" 
+     }
 });
 
 export const RegisterModel = mongoose.model("Register", registerSchema);

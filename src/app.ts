@@ -10,16 +10,13 @@ import { MongoDb } from "./data";
 
 async function main() {
 
-  const mongoDb = new MongoDb();
-
-/*   await db.connect({
-    dbName: envs.MONGO_DB_NAME,
+  const mongoDb = new MongoDb({  
     url: envs.MONGO_URL
-  }) */
+  });
 
   new Server({
     port: envs.PORT,
     routes: AppRoutes.routes,
-    databaseConnection: { mongoDb: mongoDb} //databaseConnection: [db]
+    databaseConnection: { mongoDb: mongoDb} 
   }).start();
 }

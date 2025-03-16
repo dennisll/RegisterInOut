@@ -2,6 +2,7 @@ import { Request, Response } from "express";
 import { UpdateUserDto } from "../../domain/dtos/user/updateUser.dto";
 import { CustomError, DeleteUserCase, GetUserCase, GetUsersCase, UpdateUserCase, UserEntity } from "../../domain";
 import { RolesList } from "../../roles";
+import { handleError } from "../shared/handleError";
 
 
 const roles: any = RolesList();
@@ -16,17 +17,6 @@ export class UserController{
 
     ){}
 
-      public handlerError = (error: unknown, res: Response) => {
-        if (error instanceof CustomError) {
-          res.status(error.statusCode).json({ error: error.message });
-          return;
-        }
-        // usar un logger como winston
-        //console.log(error);
-        res.status(500).json({ error: "Internal Server Error" });
-        return;
-      };
-
     public getAll = (req: Request, res: Response) => {
 
         const user = req.user as UserEntity;
@@ -35,14 +25,14 @@ export class UserController{
 
             let error = CustomError.unauthorized("Dont Access this resource");
 
-            return this.handlerError(error, res); 
+            return handleError(error, res); 
         }
 
         this.getUsersCase.getAllUsers().then( users => {
             res.json(users);
             return;
         }).catch( error => {
-            return this.handlerError(error, res);
+            return handleError(error, res);
         }) 
     }
 
@@ -51,7 +41,7 @@ export class UserController{
         this.getUserCase.getUser(req.params.id).then( user => {
             res.json(user);
         }).catch( error =>{
-            return this.handlerError(error, res);
+            return handleError(error, res);
         })
     }
 
@@ -68,7 +58,7 @@ export class UserController{
         then( user => {
             res.send(user);
         }).catch( error => {
-            return this.handlerError(error, res);
+            return handleError(error, res);
         })
     }
 
@@ -79,7 +69,7 @@ export class UserController{
             res.send(user);
         }).
         catch( error => {
-            return this.handlerError(error, res);
+            return handleError(error, res);
         })
     }
 }

@@ -61,6 +61,10 @@ const userSchema = new Schema({
     default: ["USER_ROLE"],
     enum: ["USER_ROLE", "SUPERVISOR_ROLE", "ADMIN_ROLE"],
   },
+/*   registersId: [{
+    type: Schema.Types.ObjectId,
+    ref: "Register"
+  }] */
 });
 
 export const UserModel = mongoose.model("User", userSchema);

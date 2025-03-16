@@ -1,11 +1,10 @@
 import express, { Router } from 'express';
 import { DataBaseConnection } from '../data';
-import { envs } from '../config';
 
 interface Options{
     port?: number;
     routes: Router;
-    databaseConnection: {[ key: string]: DataBaseConnection}   //databaseConnection: DataBaseConnection [];
+    databaseConnection: {[ key: string]: DataBaseConnection}   
 }
 
 export class Server{
@@ -14,7 +13,7 @@ export class Server{
 
     private readonly port: number;
     private readonly routes: Router;
-    private readonly databaseConnection: {[ key: string]: DataBaseConnection} //private readonly databaseConnection: DataBaseConnection [];
+    private readonly databaseConnection: {[ key: string]: DataBaseConnection} 
 
     constructor( options: Options) {
 
@@ -33,10 +32,7 @@ export class Server{
         //conectar a la base de datos
         const mongoDb = this.databaseConnection.mongoDb;
 
-        await mongoDb.connect({     //await this.databaseConnection[0].connect({
-            dbName: envs.MONGO_DB_NAME,
-            url: envs.MONGO_URL
-          })
+        await mongoDb.connect()
 
         //usar las rutas definidas
         this.app.use(this.routes);

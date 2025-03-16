@@ -4,9 +4,15 @@ import { DataBaseConnection, Options } from '..';
 
 export class MongoDb implements DataBaseConnection{
 
-    async connect(options: Options){
+    private optionsConneting: Options
 
-        const {url, dbName} = options;
+    constructor(private readonly options: Options){
+        this.optionsConneting = options
+    }
+
+    async connect(){ 
+
+        const {url} = this.optionsConneting;
 
         try {
 

@@ -7,6 +7,7 @@ import {
   UserEntity,
 } from "../../domain";
 import { UserModel } from "../../data";
+import { handleError } from "../shared/handleError";
 
 
 export class AuthController {
@@ -14,13 +15,6 @@ export class AuthController {
     private readonly registerUserCase: RegisterUserCase,
     private readonly generateTokenAuth: GenerateTokenAuthCase
   ) {}
-
-  public handlerError = (error: unknown, res: Response) => {
-    if (error instanceof CustomError) {
-      return res.status(error.statusCode).json({ error: error.message });
-    }
-    return res.status(500).json({ error: "Internal Server Error" });
-  };
 
   registerUser = (req: Request, res: Response) => {
     const [err, registerUserDto] = RegisterUserDto.create(req.body);
@@ -39,7 +33,7 @@ export class AuthController {
         });
       })
       .catch((error) => {
-        return this.handlerError(error, res);
+        return handleError(error, res);
       });
   };
 
@@ -52,7 +46,7 @@ export class AuthController {
         });
       })
       .catch((error) => {
-        return this.handlerError(error, res);
+        return handleError(error, res);
       });
   };
 
@@ -62,15 +56,5 @@ export class AuthController {
 
   passwordReset = (req: Request, res: Response) => {
     res.json("Password reseted");
-  };
-
-  getUsers = (req: Request, res: Response) => {
-    UserModel.find()
-      .then((users) => {
-        res.json(users);
-      })
-      .catch((e) => {
-        res.status(500).json({ error: "Internal server error" });
-      });
   };
 }

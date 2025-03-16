@@ -7,16 +7,12 @@ export class RegisterRepositoryImpl implements RegisterRepository{
         private readonly registerDatasource: RegisterDatasource
     ){}
 
-    registerData(registerDto: RegisterDto): Promise<RegisterEntity> {
-        return this.registerDatasource.registerData(registerDto);
+    registerData(id: string, registerDto: RegisterDto): Promise<RegisterEntity> {
+        return this.registerDatasource.registerData(id, registerDto);
     }
 
     getOneRegisterData(id: string): Promise<RegisterEntity> {
         return this.registerDatasource.getOneRegisterData(id);
-    }
-
-    getManyRegisterData(data: Date): Promise<RegisterEntity[]> {
-        return this.registerDatasource.getManyRegisterData(data);
     }
 
     getAllRegisterData(): Promise<RegisterEntity[]> {
